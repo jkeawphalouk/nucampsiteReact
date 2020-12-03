@@ -3,8 +3,9 @@ import {Card, CardImg, CardText, CardBody, CardTitle} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Breadcrumb from 'reactstrap/lib/Breadcrumb';
 import BreadcrumbItem from 'reactstrap/lib/BreadcrumbItem';
-import {Nav,Navbar, NavItem, NavbarToggler, Collapse, NavItemNavbar, NavbarBrand, Jumbotron, Button, Modal, ModalHeader, ModalBody, Form, FormGroup,Input,Label} from 'reactstrap';
+import {Nav,Navbar, NavItem, NavbarToggler, Col,Collapse, NavItemNavbar, NavbarBrand, Jumbotron, Button, Modal, ModalHeader, ModalBody,Row, Form, FormGroup,Input,Label} from 'reactstrap';
 import {NavLink} from 'react-router-dom';
+import { Control, LocalForm } from 'react-redux-form';
 
 
 
@@ -76,6 +77,14 @@ import {NavLink} from 'react-router-dom';
         }
 
         render(){
+            //Create LocalForm
+            //Three control inputs for rating, author, text. 
+            //rating field - Control.select and options 1-5
+            //author field - Control.text
+            //comment text field - Control.textarea and 6 rows.
+            //authror - .author
+            //rating - .rating
+            //text -.text
             return(
                 <React.Fragment>
                     <button outline className="fa-lg fa-pencil" onClick={this.toggleModal}>
@@ -85,25 +94,21 @@ import {NavLink} from 'react-router-dom';
                     <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                         <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
                             <ModalBody>
-                                <Form onSubmit={this.handleLogin}>
-                                    <FormGroup>
-                                        <Label htmlFor="username">Username</Label>
-                                        <Input type="text" id="username" name="username"
-                                        innerRef={input => this.username = input}/>
-                                    </FormGroup>
-                                    <FormGroup>
-                                        <Label htmlFor="password">Password</Label>
-                                        <Input type="password" id="password" name="password" 
-                                        innerRef={input=>this.password = input}/>
-                                    </FormGroup>
-                                    <FormGroup>
-                                        <Label check>
-                                        <Input type="checkbox" name="remember" 
-                                        innerRef={input => this.remember = input}/>Remember me
-                                        </Label>
-                                    </FormGroup>
-                                    <Button type="submit" value="submit" color="primary">Login</Button>
-                                </Form>
+                                <h1>Comments</h1>
+                                <LocalForm>
+                                    <Row className="form-group">
+                                        <Label htmlFor="Rating" md={2}>Rating</Label>
+                                        <Col md={10}>
+                                            <Control.select className="form-control" model=".rating" name="rating">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </Control.select>    
+                                        </Col>
+                                    </Row>
+                                </LocalForm>
                             </ModalBody>
                         </Modal>
                 </React.Fragment>
