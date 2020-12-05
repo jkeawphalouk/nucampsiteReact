@@ -10,8 +10,7 @@ import { Control, LocalForm, Errors } from 'react-redux-form';
 const required = val => val && val.length;
 const maxLength = len => val => !val || (val.length <= len);
 const minLength=len=>val=>val&&(val.length>=len);
-const isNumber=val=>!isNaN(+val);
-const validEmail=val=>/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
+
 
 
     function RenderCampsite({campsite}) {
@@ -96,29 +95,17 @@ const validEmail=val=>/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
         }
 
         render(){
-            //Create LocalForm
-            //Three control inputs for rating, author, text. 
-            //rating field - Control.select and options 1-5
-            //author field - Control.text
-            //comment text field - Control.textarea and 6 rows.
-            //authror - .author
-            //rating - .rating
-            //text -.text
             return(
                 <React.Fragment>
-                    <button outline className="fa-lg fa-pencil" onClick={this.toggleModal}>
+                    <Button outline color ="secondary" className="fa fa-lg fa-pencil"  onClick={this.toggleModal} outline>
                         Submit Comment
-                    </button>
-
+                    </Button>
                     <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-                        <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
+                        <ModalHeader toggle={this.toggleModal}>Submit Comment</ModalHeader>
                             <ModalBody>
-                                <h1>Comments</h1>
                                 <LocalForm onSubmit={values=>this.handleSubmit(values)}>
-                                <div>
-                                        <Label htmlFor="Rating" md={5}>Rating</Label>
-                                        
-                                        
+                                    <div className="form-group">
+                                        <Label htmlFor="Rating" style={{textAlign: 'left'}}>Rating</Label>
                                             <Control.select  className="form-control" model=".rating" name="rating">
                                                 <option>1</option>
                                                 <option>2</option>
@@ -126,11 +113,9 @@ const validEmail=val=>/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
                                                 <option>4</option>
                                                 <option>5</option>
                                             </Control.select>    
-                                    
                                     </div>
-                                    <div>
-                                        <Label htmlFor="Author" md={5}>Your Name</Label>
-                                        
+                                    <div className="form-group">
+                                        <Label htmlFor="Author" style={{textAlign:'left'}}>Your Name</Label>
                                             <Control.text model=".author" name="author"
                                                 placeholder="Your Name"
                                                 className="form-control"
@@ -139,36 +124,24 @@ const validEmail=val=>/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
                                                     minLength: minLength(2),
                                                     maxLength: maxLength(15)
                                                 }}
-
-
-                                                />
-                                                <Errors
-                                                    className="text-danger"
-                                                    model=".author"
-                                                    show="touched"
-                                                    component="div"
-                                                    messages={{
-                                                        required: 'Required',
-                                                        minLength: 'Must be at least 2 characters',
-                                                        maxLength: 'Must be 15 characters or less'
-                                                    }}
-                                                    />
-                                        </div>
-                                        
-                                        
-                                    
-
-                                    <div>
-                                        <Label htmlFor="Comment" md={2}>Comment</Label>
-                                
-                                            <Control.textarea model=".text" id="text" rows="6" className="form-control"
-                                         
                                             />
-                                        
-                                        </div>
-                                        <Button type="submit" color="primary">
-                                            Submit
-                                        </Button>
+                                            <Errors
+                                                className="text-danger"
+                                                model=".author"
+                                                show="touched"
+                                                component="div"
+                                                messages={{
+                                                    required: 'Required',
+                                                    minLength: 'Must be at least 2 characters',
+                                                    maxLength: 'Must be 15 characters or less'
+                                                }}
+                                            />
+                                    </div>
+                                    <div className="form-group">
+                                        <Label htmlFor="Comment" style={{textAlign: 'left'}}>Comment</Label>
+                                            <Control.textarea model=".text" id="text" rows="6" className="form-control"/>
+                                    </div>
+                                    <Button type="submit" color="primary"> Submit</Button>
                                 </LocalForm>
                             </ModalBody>
                         </Modal>

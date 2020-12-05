@@ -41,10 +41,10 @@ class Contact extends Component {
         <div className="container">
             <div className="row">
                 <div className="col">
-                <Breadcrumb>
-                            <BreadcrumbItem><Link to='/home'>Home</Link></BreadcrumbItem>
-                            <BreadcrumbItem active>Contact Us</BreadcrumbItem>
-                        </Breadcrumb>
+                    <Breadcrumb>
+                        <BreadcrumbItem><Link to='/home'>Home</Link></BreadcrumbItem>
+                        <BreadcrumbItem active>Contact Us</BreadcrumbItem>
+                    </Breadcrumb>
                     <h2>Contact Us</h2>
                     <hr />
                 </div>
