@@ -90,14 +90,14 @@ const minLength=len=>val=>val&&(val.length>=len);
         }
 
         handleSubmit(values){
-            console.log("User submitted: " + JSON.stringify(values));
+            //console.log("User submitted: " + JSON.stringify(values));
             alert("User submitted: " + JSON.stringify(values));
         }
 
         render(){
             return(
                 <React.Fragment>
-                    <Button outline color ="secondary" className="fa fa-lg fa-pencil"  onClick={this.toggleModal} outline>
+                    <Button outline color ="secondary" className="fa fa-lg fa-pencil"  onClick={this.toggleModal}>
                         Submit Comment
                     </Button>
                     <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
@@ -107,11 +107,12 @@ const minLength=len=>val=>val&&(val.length>=len);
                                     <div className="form-group">
                                         <Label htmlFor="Rating" style={{textAlign: 'left'}}>Rating</Label>
                                             <Control.select  className="form-control" model=".rating" name="rating">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
+                                                <option value="null">Choose One...</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
                                             </Control.select>    
                                     </div>
                                     <div className="form-group">
